@@ -1,0 +1,22 @@
+services:
+  lan:
+    image: alpine:3.22
+    command: >
+      sh -c 'apk add -q --no-cache curl &&
+      while true; do
+        curl -s -o /dev/null https://example.com || true;
+        nslookup github.com > /dev/null 2>&1 || true;
+        sleep 5;
+      done'
+
+  agent:
+    build: .
+    network_mode: "service:lan"
+    depends_on: [lan]
+    cap_drop: [ALL]
+    cap_add: [ NET_RAW, NET_ADMIN ]
+    read_only: true
+    mem_limit: 512m
+    memswap_limit: 512m
+    volumes:
+        - ./dev-data:/data
