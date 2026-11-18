@@ -8,6 +8,7 @@ age = "0.12.1"
 anyhow = "1.0.104"
 backon = "1.6.0"
 etherparse = "0.21.0"
+futures-util = { version = "0.3.34", default-features = false, features = ["sink", "std"] }
 nix = { version = "0.31.3", features = ["fs", "mman"] }
 pcap = { version = "2.5.0", features = ["capture-stream"] }
 pcap-file = "2.0.0"

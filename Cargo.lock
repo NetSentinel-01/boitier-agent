@@ -96,6 +96,7 @@ dependencies = [
  "anyhow",
  "backon",
  "etherparse",
+ "futures-util",
  "nix",
  "pcap",
  "pcap-file",
